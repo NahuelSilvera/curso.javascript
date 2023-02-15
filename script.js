@@ -1,24 +1,43 @@
-function validarMontoIngresado(monto){
-    while(isNaN(monto)) {
-        alert("Ingreso un valor no numerico, por favor ingrese un valor numerico");
-        monto = parseInt(prompt("Ingrese el monto"));
+const nombres = [];
+let nombreIngresado = prompt("Ingrese su nombre");
+nombres.push(nombreIngresado.toLowerCase());
+console.log(nombres);
+console.log(nombres.length);
+
+function validarMontoIngresado(monto) {
+    while (isNaN(monto)) {
+        alert("Ingresaste un valor no numérico, por favor ingresa un valor numérico");
+        monto = parseInt(prompt("Ingrese el monto de la compra"));
     }
-return monto;
+    return monto;
 }
 
-let montoIngresado = parseInt(prompt(`Ingrese el monto`));
+let montoIngresado = parseInt(prompt(`Ingrese el monto de la compra`));
 montoIngresado = validarMontoIngresado(montoIngresado);
 
-function simuladorDeCompras(){
-    let tarjeta = prompt(`Que tarjeta va usar visa o mastercard?`);
+function simuladorDeCompras() {
+    let tarjeta = prompt(`Visa o Mastercard`);
 
-    if ( tarjeta == "visa"){
-        const cuota = prompt(`Usted tendra la posibilidad de elegir entre 3 y 6 cuotas`);
-    }else if ( tarjeta == "mastercard"){
-        const cuota = prompt(`Usted tendra la posibilidad de elegir entre 9 y 12 cuotas`);
-    }else{
-        alert(`Usted no ingreso ninguna de las tarjetas disponibles`);
-    } 
+    if (tarjeta === "visa") {
+        const cuota = prompt(`Tienes la posibilidad de elegir entre 3 y 6 cuotas`);
+    } else if (tarjeta === "mastercard") {
+        const cuota = prompt(`Tienes la posibilidad de elegir entre 9 y 12 cuotas`);
+    } else {
+        alert(`No seleccionaste ninguna de las tarjetas disponibles`);
+    }
 }
 
-simuladorDeCompras()
+simuladorDeCompras();
+
+class Tarjeta {
+    constructor(tipoDeTarjeta, monto) {
+        this.tipoDeTarjeta = tipoDeTarjeta;
+        this.monto = monto;
+    }
+    interes() {
+        return this.monto * 3;
+    }
+}
+
+const visa = new Tarjeta("visa", montoIngresado);
+alert(`${nombres} ingresó: $${visa.monto} y con los intereses te queda en: $${visa.interes()}`);
