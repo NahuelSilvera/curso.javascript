@@ -33,7 +33,7 @@ const nombres = [];
 			const monto = parseInt(montoInput.value);
 			const tarjetaObj = new Tarjeta(tarjeta, monto);
 
-			resultadoParagraph.innerText = `${nombreInput.value} ingresó: $${monto} y con los intereses te queda en: $${tarjetaObj.interes(cuotas)}`;
+			resultadoParagraph.innerText = `${nombreInput.value} según las opciónes seleccionadas anteriormente te queda a pagar un total de $${tarjetaObj.interes(cuotas)}`;
 		}
 
 		class Tarjeta {
@@ -76,7 +76,7 @@ const nombres = [];
         });
     
 
-// Modo Dark-Light 
+//Dark-Light 
 const botonFondo = document.getElementById("botonFondo");
 
 botonFondo.addEventListener("click", ()=>{
@@ -88,7 +88,7 @@ botonFondo.addEventListener("click", ()=>{
     }
 })
 
-//modo del localStorage 
+//LocalStorage 
 
 const modo = localStorage.getItem("modo");
 if (modo === "dark"){
@@ -97,4 +97,71 @@ if (modo === "dark"){
     document.body.classList.remove("dark");
 };
 
+//---------------//
+
+const btnMostrarDolar = document.getElementById("conversionBoton");
+
+btnMostrarDolar.addEventListener("click", function() {
+    const apiDolarDiv = document.getElementById("conversion");
+
+const myHeaders = new Headers();
+myHeaders.append("apikey", "KPA4TtbkCLALNaHEyfnhEElwCcchsdE0");
+
+let requestOptions = {
+    method: 'GET',
+    redirect: 'follow',
+    headers: myHeaders
+};
+
+function mostrarDolarOficial() {
+    fetch("https://api.apilayer.com/fixer/convert?to=ars&from=usd&amount=1", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        const dolarOficial = parseFloat(result.result.toFixed(2));
+        /*apiDolarDiv.innerHTML = `<p>Dolar Oficial: $${dolarOficial}</p>`;*/
+        Toastify({
+            text: `Dolar Oficial: $${dolarOficial}`,
+            duration: 30000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+            background: "linear-gradient(to right, #111111, #303030)",
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+    })
+    .catch(error => console.log('error', error));
+    
+    fetch("https://api.apilayer.com/fixer/convert?to=ars&from=eur&amount=1", requestOptions)
+    .then(response => response.json())
+    .then(result => {
+        const euroOficial = parseFloat(result.result.toFixed(2));
+        /*apiDolarDiv.innerHTML = `<p>Dolar Oficial: $${dolarOficial}</p>`;*/
+        Toastify({
+            text: `Euro Oficial: $${euroOficial}`,
+            duration: 30000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "right", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+            background: "linear-gradient(to right, #111111, #303030)",
+            },
+            onClick: function(){} // Callback after click
+        }).showToast();
+    })
+    .catch(error => console.log('error', error)); 
+}
+
+btnMostrarDolar.addEventListener("click", mostrarDolarOficial);
+
+});
+
 cargarCuotas();
+

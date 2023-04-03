@@ -1,10 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+    margin: 15px;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
 .dark{
     background-color: rgb(22, 21, 21);
     color: white;
 }
-body{
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+
+.divGeneral{
+    display: grid;
+    width: 100%;
+    height: 60vh;
+    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: 
+        "h1"
+        "nombre"
+        "monto"
+        "tarjetas"
+        "cuotas"
+        "botonInteres"
+        "botonModoDeVisualizacion"
+        "conversorMonedas";
+    align-items: center;
+}
+h1{
+    grid-area: h1;
+}
+.nombre{
+    grid-area: nombre;
+}
+.monto{
+    grid-area: monto;
+}
+.tarjetas{
+    grid-area: tarjetas;
+}
+.cuotas{
+    grid-area: cuotas;
+}
+.botonInteres{
+    grid-area: botonInteres;
+}
+.botonModoDeVisualizacion{
+    grid-area: botonModoDeVisualizacion;
+}
+.conversorMonedas{
+    grid-area: conversorMonedas;
 }

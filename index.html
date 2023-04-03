@@ -4,37 +4,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="./style.css">
     <title>Nahuel Silvera</title>
 </head>
 <body>
+	<div class="divGeneral">
     <h1>Simulador de compra con tarjeta de credito</h1>
-	<label for="nombre">Nombre:</label>
-	<input type="text" id="nombre" required>
-	<br>
-	<label for="monto">Monto de la compra:</label>
-	<input type="number" id="monto" required>
-	<br>
-	<label for="tarjeta">Tipo de tarjeta:</label>
-	<select id="tarjeta" required>
-		<option value="">Seleccionar tarjeta</option>
-		<option value="visa">Visa</option>
-		<option value="mastercard">Mastercard</option>
-	</select>
-	<br>
-	<label for="cuotas">Número de cuotas:</label>
-	<select id="cuotas" required>
-		<option value="">Seleccionar cuotas</option>
-		<option value="3">3</option>
-		<option value="6">6</option>
-		<option value="9">9</option>
-		<option value="12">12</option>
-	</select>
-	<br>
-	<button id="calcular">Calcular interés</button>
-	<br>
-	<p id="resultado"></p>
-	<button id="botonFondo">Dark mode/Light mode</button>
-    <script src="./script.js"></script>
+		<div class="nombre">
+			<label for="nombre">Nombre:</label>
+			<input type="text" id="nombre" required>
+		</div>
+		<div class="monto">
+			<br>
+				<label for="monto">Monto de la compra:</label>
+				<input type="number" id="monto" required>
+			<br>
+		</div>
+		<div class="tarjetas">
+			<label for="tarjeta">Tipo de tarjeta:</label>
+			<select id="tarjeta" required>
+				<option value="">Seleccionar tarjeta</option>
+				<option value="visa">Visa</option>
+				<option value="mastercard">Mastercard</option>
+			</select>
+		</div>
+		<div class="cuotas">
+			<br>
+				<label for="cuotas">Número de cuotas:</label>
+				<select id="cuotas" required>
+					<option value="">Seleccionar cuotas</option>
+					<option value="3">3</option>
+					<option value="6">6</option>
+					<option value="9">9</option>
+					<option value="12">12</option>
+			</select>
+			<br>
+		</div>
+		<div class="botonInteres">
+			<button id="calcular">Calcular interés</button>
+			<br>
+			<p id="resultado"></p>
+		</div>
+		<div class="botonModoDeVisualizacion">
+			<button id="botonFondo">Dark mode/Light mode</button>
+		</div>
+		<div class="conversorMonedas" id="conversion">
+			<button id="conversionBoton">Convesor de moneda</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>   
+	<script src="./script.js"></script>
 </body>
 </html>
